@@ -154,7 +154,7 @@ impl Ifd {
     /// [`TiffFile`]: ../struct.TiffFile.html
     pub fn with_entry<T: FieldValues + 'static>(mut self, tag: FieldTag, value: T) -> Self {
         if self.entries.insert(tag, Box::new(value)).is_some() {
-            panic!("Tried to add the same tag twice.");
+            panic!("Tried to add the same tag {:?} twice.", tag);
         }
         self
     }
